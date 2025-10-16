@@ -14,7 +14,7 @@ class AppConstants {
   static const String categoriesEndpoint = ApiConstants.categoriesEndpoint;
 
   // Storage
-  static const String isOnboardingCompleted = StorageConstants.isOnboardingCompleted;
+  static const bool isOnboardingCompleted = StorageConstants.isOnboardingCompleted;
 
   // UI
   static const double defaultPadding = UIConstants.defaultPadding;
