@@ -23,7 +23,7 @@ Map<String, dynamic> _$FavoriteModelToJson(FavoriteModel instance) =>
       'image_id': instance.imageId,
       'sub_id': instance.subId,
       'created_at': instance.createdAt,
-      'image': instance.image,
+      'image': instance.image?.toJson(),
     };
 
 FavoriteImageModel _$FavoriteImageModelFromJson(Map<String, dynamic> json) =>
@@ -43,7 +43,7 @@ Map<String, dynamic> _$CreateFavoriteRequestToJson(
   CreateFavoriteRequest instance,
 ) => <String, dynamic>{
   'image_id': instance.imageId,
-  if (instance.subId != null) 'sub_id': instance.subId,
+  if (instance.subId case final value?) 'sub_id': value,
 };
 
 CreateFavoriteResponse _$CreateFavoriteResponseFromJson(

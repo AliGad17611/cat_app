@@ -23,7 +23,13 @@ test/
 │   ├── primary_button_test.dart
 │   ├── onboarding_view_test.dart
 │   ├── home_view_test.dart
-│   └── cat_app_test.dart
+│   ├── cat_app_test.dart
+│   ├── pet_card_widget_test.dart
+│   ├── favorite_icon_test.dart
+│   ├── search_bar_widget_test.dart
+│   ├── category_chip_widget_test.dart
+│   ├── breed_details_view_test.dart
+│   └── favorites_view_test.dart
 ├── test_suite.dart           # Main test suite
 └── README.md                 # This file
 ```
@@ -49,6 +55,20 @@ flutter test test/widget/
 ```bash
 flutter test test/unit/home_cubit_test.dart
 flutter test test/widget/primary_button_test.dart
+flutter test test/widget/onboarding_view_test.dart
+flutter test test/widget/home_view_test.dart
+flutter test test/widget/cat_app_test.dart
+flutter test test/widget/pet_card_widget_test.dart
+flutter test test/widget/favorite_icon_test.dart
+flutter test test/widget/search_bar_widget_test.dart
+flutter test test/widget/category_chip_widget_test.dart
+flutter test test/widget/breed_details_view_test.dart
+flutter test test/widget/favorites_view_test.dart
+```
+
+### Run Test Suite
+```bash
+flutter test test/test_suite.dart
 ```
 
 ### Run with Coverage
@@ -65,85 +85,93 @@ genhtml coverage/lcov.info -o coverage/html
 
 ## Test Categories
 
-### Unit Tests (204 tests)
+### Unit Tests
 
-Tests for business logic, repositories, cubits, models, and utilities without UI dependencies.
+1. **CacheHelper Tests** (`unit/cache_helper_test.dart`)
+   - Tests for storing and retrieving different data types
+   - Tests for deleting data
+   - Tests for clearing all data
+   - Tests for error handling
 
-**Key Areas Covered:**
-- **Repositories** (31 tests): API interactions, error handling, data transformation
-- **Cubits** (40 tests): State management, business logic, event handling
-- **Models** (38 tests): Data serialization/deserialization, validation
-- **Error Handling** (53 tests): ApiErrorModel, ApiErrorHandler, error mapping
-- **Utilities** (20 tests): CacheHelper, routing, helpers
-- **State Management** (22 tests): State classes, copyWith, Equatable
+2. **ApiErrorModel Tests** (`unit/api_error_model_test.dart`)
+   - Tests for parsing JSON responses
+   - Tests for different error formats
+   - Tests for error status codes
+   - Tests for helper methods
 
-**Coverage:**
-- Home feature: 100%
-- Favorites feature: 100%
-- Error handling: 100%
-- Models: 100%
-- Utilities: 100%
+3. **AppRoutes Tests** (`unit/app_routes_test.dart`)
+   - Tests for route generation
+   - Tests for navigation to different screens
+   - Tests for handling unknown routes
 
-See [test/unit/README_TESTS.md](unit/README_TESTS.md) for detailed documentation.
+### Widget Tests
 
-### Widget Tests (15+ tests)
+1. **PrimaryButton Tests** (`widget/primary_button_test.dart`)
+   - Tests for button display
+   - Tests for tap interactions
+   - Tests for loading state
+   - Tests for icon display
+   - Tests for custom colors
 
-Tests for UI components and screens with widget interactions.
+2. **OnboardingView Tests** (`widget/onboarding_view_test.dart`)
+   - Tests for onboarding content display
+   - Tests for navigation
+   - Tests for layout structure
 
-**Key Areas Covered:**
-- Primary button widget (states, interactions, customization)
-- Onboarding screen (layout, navigation)
-- Home screen (structure, widgets)
-- App configuration (theming, routing, initialization)
+3. **HomeView Tests** (`widget/home_view_test.dart`)
+   - Tests for home screen display
+   - Tests for widget structure
 
-## Test Execution
+4. **CatApp Tests** (`widget/cat_app_test.dart`)
+   - Tests for app configuration
+   - Tests for theming
+   - Tests for routing
+   - Tests for initial route
 
-### Using Test Scripts
+5. **PetCardWidget Tests** (`widget/pet_card_widget_test.dart`)
+   - Tests for breed information display
+   - Tests for image handling
+   - Tests for favorite icon
+   - Tests for tap interactions
+   - Tests for navigation
+   - Tests for conditional rendering
 
-**Windows:**
-```bash
-test_runner.bat
-```
+6. **FavoriteIcon Tests** (`widget/favorite_icon_test.dart`)
+   - Tests for icon state (favorited/not favorited)
+   - Tests for toggle favorite functionality
+   - Tests for BLoC integration
+   - Tests for icon styling
 
-**Unix/Linux/Mac:**
-```bash
-./test_runner.sh
-```
+7. **SearchBarWidget Tests** (`widget/search_bar_widget_test.dart`)
+   - Tests for search input field
+   - Tests for search icon
+   - Tests for filter button
+   - Tests for hint text
+   - Tests for text input handling
 
-### Manual Execution
+8. **CategoryChipWidget Tests** (`widget/category_chip_widget_test.dart`)
+   - Tests for label display
+   - Tests for selected/unselected states
+   - Tests for tap interactions
+   - Tests for styling changes
+   - Tests for border and colors
 
-**Run tests in parallel:**
-```bash
-flutter test --concurrency=4
-```
+9. **BreedDetailsView Tests** (`widget/breed_details_view_test.dart`)
+   - Tests for breed information sections
+   - Tests for SliverAppBar
+   - Tests for back navigation
+   - Tests for favorite functionality
+   - Tests for conditional widget display
+   - Tests for layout structure
 
-**Run with verbose output:**
-```bash
-flutter test --verbose
-```
-
-**Run specific test by name:**
-```bash
-flutter test --name "should load breeds successfully"
-```
-
-**Run tests with reporting:**
-```bash
-flutter test --reporter expanded
-```
-
-## Mock Generation
-
-This project uses Mockito for test mocks. To regenerate mocks after changing dependencies:
-
-```bash
-dart run build_runner build --delete-conflicting-outputs
-```
-
-Or watch mode for continuous regeneration:
-```bash
-dart run build_runner watch --delete-conflicting-outputs
-```
+10. **FavoritesView Tests** (`widget/favorites_view_test.dart`)
+    - Tests for empty state
+    - Tests for loading state
+    - Tests for error state
+    - Tests for favorites grid display
+    - Tests for category tabs
+    - Tests for pull to refresh
+    - Tests for retry functionality
 
 ## Test Coverage
 
