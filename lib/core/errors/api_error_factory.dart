@@ -7,6 +7,5 @@ class ApiErrorFactory {
         message: "Something went wrong",
         icon: Icons.error,
         statusCode: LocalStatusCodes.defaultError,
-        errors: ["Error Occured!"]
       );
 }

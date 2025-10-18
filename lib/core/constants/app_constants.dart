@@ -10,7 +10,7 @@ class AppConstants {
   static const int receiveTimeout = ApiConstants.receiveTimeout;
   static const int sendTimeout = ApiConstants.sendTimeout;
   // API Endpoints
-  static const String animalsListEndpoint = ApiConstants.animalsListEndpoint;
+  static const String breedsEndpoint = ApiConstants.breedsEndpoint;
   static const String categoriesEndpoint = ApiConstants.categoriesEndpoint;
 
   // Storage
