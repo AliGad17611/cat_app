@@ -6,9 +6,7 @@ import 'package:cat_app/features/home/presentation/widgets/home_header.dart';
 import 'package:cat_app/features/home/presentation/widgets/search_bar_widget.dart';
 import 'package:cat_app/features/home/presentation/widgets/category_list_widget.dart';
 import 'package:cat_app/features/home/presentation/widgets/pet_card_widget.dart';
-import 'package:cat_app/features/home/presentation/widgets/bottom_nav_bar_widget.dart';
 import 'package:cat_app/core/utils/app_colors.dart';
-import 'package:cat_app/core/di/injection_container.dart';
 import 'package:cat_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:cat_app/features/home/presentation/cubit/home_state.dart';
 
@@ -17,25 +15,30 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<HomeCubit>()..loadBreeds(),
-      child: Scaffold(
-        backgroundColor: AppColors.white,
-        body: SafeArea(
-          child: Column(
-            children: [
-              verticalSpace(16),
-              const HomeHeader(),
-              verticalSpace(20),
-              const SearchBarWidget(),
-              verticalSpace(24),
-              const CategoryListWidget(),
-              verticalSpace(20),
-              const Expanded(child: _BreedsList()),
-            ],
-          ),
-        ),
-        bottomNavigationBar: const BottomNavBarWidget(),
+    return const Scaffold(
+      backgroundColor: AppColors.white,
+      body: HomeViewContent(),
+    );
+  }
+}
+
+class HomeViewContent extends StatelessWidget {
+  const HomeViewContent({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Column(
+        children: [
+          verticalSpace(16),
+          const HomeHeader(),
+          verticalSpace(20),
+          const SearchBarWidget(),
+          verticalSpace(24),
+          const CategoryListWidget(),
+          verticalSpace(20),
+          const Expanded(child: _BreedsList()),
+        ],
       ),
     );
   }

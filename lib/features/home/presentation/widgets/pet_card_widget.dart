@@ -108,7 +108,8 @@ class PetCardWidget extends StatelessWidget {
             ),
           ),
           // Favorite Icon
-          const FavoriteIcon(isFavorite: false),
+          if (breed.referenceImageId != null)
+            FavoriteIcon(imageId: breed.referenceImageId!),
         ],
       ),
     );
