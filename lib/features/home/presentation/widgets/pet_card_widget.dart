@@ -1,26 +1,15 @@
 import 'package:cat_app/core/helper/spacing.dart';
 import 'package:cat_app/features/home/presentation/widgets/favorite_icon.dart';
+import 'package:cat_app/features/home/data/models/breed_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cat_app/core/utils/app_colors.dart';
 import 'package:cat_app/core/utils/app_text_styles.dart';
 
 class PetCardWidget extends StatelessWidget {
-  final String name;
-  final String gender;
-  final String age;
-  final String distance;
-  final String imageUrl;
-  final bool isFavorite;
-  const PetCardWidget({
-    super.key,
-    required this.name,
-    required this.gender,
-    required this.age,
-    required this.distance,
-    required this.imageUrl,
-    required this.isFavorite,
-  });
+  final BreedModel breed;
+
+  const PetCardWidget({super.key, required this.breed});
 
   @override
   Widget build(BuildContext context) {
@@ -50,17 +39,30 @@ class PetCardWidget extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.r),
-              child: Image.asset(
-                imageUrl,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Icon(
-                    Icons.pets,
-                    color: AppColors.primary,
-                    size: 40.sp,
-                  );
-                },
-              ),
+              child: breed.imageUrl != null
+                  ? Image.network(
+                      breed.imageUrl!,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(
+                          Icons.pets,
+                          color: AppColors.primary,
+                          size: 40.sp,
+                        );
+                      },
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
+                    )
+                  : Icon(Icons.pets, color: AppColors.primary, size: 40.sp),
             ),
           ),
           horizontalSpace(16),
@@ -69,27 +71,44 @@ class PetCardWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: AppTextStyles.font16W700Black),
+                Text(breed.name, style: AppTextStyles.font16W700Black),
                 verticalSpace(4),
-                Text(gender, style: AppTextStyles.font12W400TextSecondary),
+                if (breed.origin != null)
+                  Text(
+                    'Origin: ${breed.origin}',
+                    style: AppTextStyles.font12W400TextSecondary,
+                  ),
                 verticalSpace(2),
-                Text(age, style: AppTextStyles.font12W400TextSecondary),
+                if (breed.lifeSpan != null)
+                  Text(
+                    'Life span: ${breed.lifeSpan} years',
+                    style: AppTextStyles.font12W400TextSecondary,
+                  ),
                 verticalSpace(6),
-                Row(
-                  children: [
-                    Icon(Icons.location_on, color: AppColors.red, size: 14.sp),
-                    horizontalSpace(4),
-                    Text(
-                      distance,
-                      style: AppTextStyles.font11W400TextSecondary,
-                    ),
-                  ],
-                ),
+                if (breed.temperament != null)
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.sentiment_satisfied_alt,
+                        color: AppColors.primary,
+                        size: 14.sp,
+                      ),
+                      horizontalSpace(4),
+                      Expanded(
+                        child: Text(
+                          breed.temperament!.split(',').take(2).join(','),
+                          style: AppTextStyles.font11W400TextSecondary,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
               ],
             ),
           ),
           // Favorite Icon
-          FavoriteIcon(isFavorite: isFavorite),
+          const FavoriteIcon(isFavorite: false),
         ],
       ),
     );
