@@ -11,6 +11,7 @@ class AppColors {
   // Background colors
   static const Color backgroundLight = Color(0xFFF5F5F5);
   static const Color backgroundTealLight = Color(0xFFE8F5F4);
+  static const Color backgroundGrey = Color(0xFFE0E0E0);
 
   // Accent colors
   static const Color red = Color(0xFFFF6B6B);

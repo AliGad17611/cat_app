@@ -3,4 +3,5 @@ class Routes {
   static const String home = '/home';
   static const String mainNavigation = '/main';
   static const String favorites = '/favorites';
+  static const String breedDetails = '/breed-details';
 }

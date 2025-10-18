@@ -3,6 +3,12 @@ export 'search_bar_widget.dart';
 export 'category_chip_widget.dart';
 export 'category_list_widget.dart';
 export 'pet_card_widget.dart';
-
-
-
+export 'favorite_icon.dart';
+export 'breed_header_widget.dart';
+export 'breed_description_widget.dart';
+export 'breed_temperament_widget.dart';
+export 'breed_weight_widget.dart';
+export 'breed_characteristics_widget.dart';
+export 'characteristic_row_widget.dart';
+export 'breed_alternative_names_widget.dart';
+export 'breed_links_widget.dart';
