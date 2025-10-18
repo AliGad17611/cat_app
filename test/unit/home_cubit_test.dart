@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
+import 'package:dartz/dartz.dart';
 import 'package:cat_app/core/errors/api_error_model.dart';
 import 'package:cat_app/features/home/data/repositories/home_repository.dart';
 import 'package:cat_app/features/home/data/models/breed_model.dart';
@@ -80,7 +81,7 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenAnswer((_) async => tBreedsList);
+          ).thenAnswer((_) async => Right(tBreedsList));
           return cubit;
         },
         act: (cubit) => cubit.loadBreeds(),
@@ -106,7 +107,7 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenAnswer((_) async => []);
+          ).thenAnswer((_) async => const Right([]));
           return cubit;
         },
         act: (cubit) => cubit.loadBreeds(),
@@ -124,7 +125,7 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenAnswer((_) async => tBreedsList2);
+          ).thenAnswer((_) async => Right(tBreedsList2));
           return cubit;
         },
         seed: () => HomeState(
@@ -152,18 +153,20 @@ void main() {
       );
 
       blocTest<HomeCubit, HomeState>(
-        'emits [loading, failure] when ApiErrorModel is thrown',
+        'emits [loading, failure] when ApiErrorModel is returned',
         build: () {
           when(
             mockRepository.getBreeds(
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenThrow(
-            ApiErrorModel(
-              message: 'No internet connection',
-              statusCode: null,
-              icon: Icons.wifi_off,
+          ).thenAnswer(
+            (_) async => Left(
+              ApiErrorModel(
+                message: 'No internet connection',
+                statusCode: null,
+                icon: Icons.wifi_off,
+              ),
             ),
           );
           return cubit;
@@ -186,11 +189,13 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenThrow(
-            ApiErrorModel(
-              message: 'Server error, please try again later',
-              statusCode: 500,
-              icon: Icons.error,
+          ).thenAnswer(
+            (_) async => Left(
+              ApiErrorModel(
+                message: 'Server error, please try again later',
+                statusCode: 500,
+                icon: Icons.error,
+              ),
             ),
           );
           return cubit;
@@ -201,27 +206,6 @@ void main() {
           const HomeState(
             status: HomeStatus.failure,
             errorMessage: 'Server error, please try again later',
-          ),
-        ],
-      );
-
-      blocTest<HomeCubit, HomeState>(
-        'emits failure with generic message for unexpected error',
-        build: () {
-          when(
-            mockRepository.getBreeds(
-              page: anyNamed('page'),
-              limit: anyNamed('limit'),
-            ),
-          ).thenThrow(Exception('Unexpected error'));
-          return cubit;
-        },
-        act: (cubit) => cubit.loadBreeds(),
-        expect: () => [
-          const HomeState(status: HomeStatus.loading),
-          const HomeState(
-            status: HomeStatus.failure,
-            errorMessage: 'An unexpected error occurred',
           ),
         ],
       );
@@ -257,7 +241,7 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenAnswer((_) async => tBreedsList2);
+          ).thenAnswer((_) async => Right(tBreedsList2));
           return cubit;
         },
         seed: () => HomeState(
@@ -289,11 +273,13 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenThrow(
-            ApiErrorModel(
-              message: 'Connection timeout',
-              statusCode: null,
-              icon: Icons.timer_off,
+          ).thenAnswer(
+            (_) async => Left(
+              ApiErrorModel(
+                message: 'Connection timeout',
+                statusCode: null,
+                icon: Icons.timer_off,
+              ),
             ),
           );
           return cubit;
@@ -321,7 +307,7 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenAnswer((_) async => tBreedsList);
+          ).thenAnswer((_) async => Right(tBreedsList));
           return cubit;
         },
         seed: () => HomeState(
@@ -343,7 +329,7 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenAnswer((_) async => tBreedsList);
+          ).thenAnswer((_) async => Right(tBreedsList));
           return cubit;
         },
         seed: () => HomeState(
@@ -374,7 +360,7 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenAnswer((_) async => tBreedsList2);
+          ).thenAnswer((_) async => Right(tBreedsList2));
           return cubit;
         },
         seed: () => HomeState(
@@ -449,11 +435,13 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenThrow(
-            ApiErrorModel(
-              message: 'Not found',
-              statusCode: 404,
-              icon: Icons.search_off,
+          ).thenAnswer(
+            (_) async => Left(
+              ApiErrorModel(
+                message: 'Not found',
+                statusCode: 404,
+                icon: Icons.search_off,
+              ),
             ),
           );
           return cubit;
@@ -476,11 +464,13 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenThrow(
-            ApiErrorModel(
-              message: 'Unauthorized',
-              statusCode: 401,
-              icon: Icons.lock,
+          ).thenAnswer(
+            (_) async => Left(
+              ApiErrorModel(
+                message: 'Unauthorized',
+                statusCode: 401,
+                icon: Icons.lock,
+              ),
             ),
           );
           return cubit;
@@ -503,11 +493,13 @@ void main() {
               page: anyNamed('page'),
               limit: anyNamed('limit'),
             ),
-          ).thenThrow(
-            ApiErrorModel(
-              message: 'Validation failed',
-              statusCode: 400,
-              icon: Icons.warning,
+          ).thenAnswer(
+            (_) async => Left(
+              ApiErrorModel(
+                message: 'Validation failed',
+                statusCode: 400,
+                icon: Icons.warning,
+              ),
             ),
           );
           return cubit;

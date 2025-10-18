@@ -3,11 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:cat_app/features/home/data/models/breed_model.dart' as _i4;
+import 'package:cat_app/core/errors/api_error_model.dart' as _i5;
+import 'package:cat_app/features/home/data/models/breed_model.dart' as _i6;
 import 'package:cat_app/features/home/data/repositories/home_repository.dart'
-    as _i2;
+    as _i3;
+import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -24,24 +26,38 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
+  _FakeEither_0(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [HomeRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
+class MockHomeRepository extends _i1.Mock implements _i3.HomeRepository {
   MockHomeRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.BreedModel>> getBreeds({
+  _i4.Future<_i2.Either<_i5.ApiErrorModel, List<_i6.BreedModel>>> getBreeds({
     int? page = 0,
     int? limit = 20,
   }) =>
       (super.noSuchMethod(
             Invocation.method(#getBreeds, [], {#page: page, #limit: limit}),
-            returnValue: _i3.Future<List<_i4.BreedModel>>.value(
-              <_i4.BreedModel>[],
-            ),
+            returnValue:
+                _i4.Future<
+                  _i2.Either<_i5.ApiErrorModel, List<_i6.BreedModel>>
+                >.value(
+                  _FakeEither_0<_i5.ApiErrorModel, List<_i6.BreedModel>>(
+                    this,
+                    Invocation.method(#getBreeds, [], {
+                      #page: page,
+                      #limit: limit,
+                    }),
+                  ),
+                ),
           )
-          as _i3.Future<List<_i4.BreedModel>>);
+          as _i4.Future<_i2.Either<_i5.ApiErrorModel, List<_i6.BreedModel>>>);
 }
