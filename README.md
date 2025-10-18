@@ -31,28 +31,13 @@ graph TB
         A[Views/Widgets] --> B[Cubit/State Management]
     end
     
-    subgraph "Domain Layer"
-        C[Use Cases]
-        D[Entities]
-    end
-    
     subgraph "Data Layer"
-        E[Repositories] --> F[Data Sources]
-        F --> G[API Services]
-        F --> H[Local Storage]
+        C[Repositories] --> D[Data Sources]
+        D --> E[API Services]
+        D --> F[Local Storage]
     end
     
     B --> C
-    C --> E
-    
-    style A fill:#e1f5ff
-    style B fill:#e1f5ff
-    style C fill:#fff4e1
-    style D fill:#fff4e1
-    style E fill:#ffe1e1
-    style F fill:#ffe1e1
-    style G fill:#ffe1e1
-    style H fill:#ffe1e1
 ```
 
 ## 🔄 App Flow
@@ -86,14 +71,6 @@ flowchart TD
     
     Fav --> ViewFavList[View Saved Favorites]
     ViewFavList --> Details
-    
-    style Start fill:#90EE90
-    style MainNav fill:#87CEEB
-    style Home fill:#FFD700
-    style Fav fill:#FFD700
-    style Details fill:#FFA07A
-    style SaveLocal fill:#98FB98
-    style DeleteLocal fill:#FFB6C1
 ```
 
 ### Data Flow Architecture
@@ -320,13 +297,6 @@ flowchart LR
     F --> G
     
     G --> H[Show Success Message]
-    
-    style A fill:#e1f5ff
-    style B fill:#fff4e1
-    style C fill:#ffe1e1
-    style D fill:#e1ffe1
-    style G fill:#f0e1ff
-    style H fill:#90EE90
 ```
 
 ### Pagination Flow
@@ -345,11 +315,6 @@ flowchart TD
     
     Append --> Update[Update UI]
     Error --> Retry[Allow Retry]
-    
-    style Start fill:#87CEEB
-    style Load fill:#FFD700
-    style Append fill:#90EE90
-    style Error fill:#FFB6C1
 ```
 
 ## 📱 Screens
