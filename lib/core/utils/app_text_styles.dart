@@ -70,4 +70,40 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.black,
   );
+
+  static final TextStyle font24W700Black = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
+  );
+
+  static final TextStyle font18W700Black = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
+  );
+
+  static final TextStyle font14W400TextSecondary = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+  );
+
+  static final TextStyle font14W500Black = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.black,
+  );
+
+  static final TextStyle font14W500Primary = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
+  );
+
+  static final TextStyle font12W400Primary = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primary,
+  );
 }
