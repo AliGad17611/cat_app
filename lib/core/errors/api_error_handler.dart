@@ -14,7 +14,6 @@ class ApiErrorHandler {
           connectionError: () => ApiErrorModel(
             message:
                 "No internet connection. Please check your Wi-Fi or mobile data.",
-            errors: [],
             icon: Icons.wifi_off,
             statusCode: LocalStatusCodes.connectionError,
           ),
@@ -23,26 +22,22 @@ class ApiErrorHandler {
                 "The connection took too long. Try checking your internet or try again later.",
             icon: Icons.timer_off,
             statusCode: LocalStatusCodes.connectionTimeout,
-            errors: [],
           ),
           sendTimeout: () => ApiErrorModel(
             message: "Request timed out while sending data. Please try again.",
             icon: Icons.send,
             statusCode: LocalStatusCodes.sendTimeout,
-            errors: [],
           ),
           receiveTimeout: () => ApiErrorModel(
             message: "Server took too long to respond. Please try again later.",
             icon: Icons.downloading,
             statusCode: LocalStatusCodes.receiveTimeout,
-            errors: [],
           ),
           badCertificate: () => ApiErrorModel(
             message:
                 "Security issue detected with the server. Connection not secure.",
             icon: Icons.security,
             statusCode: LocalStatusCodes.badCertificate,
-            errors: [],
           ),
           badResponse: () {
             // Use the new status code handling method
@@ -52,14 +47,12 @@ class ApiErrorHandler {
             message: "The request was cancelled. Please try again.",
             icon: Icons.cancel,
             statusCode: LocalStatusCodes.cancel,
-            errors: [],
           ),
           unknown: () => ApiErrorModel(
             message:
                 "Something went wrong. Please check your connection and try again.",
             icon: Icons.error_outline,
             statusCode: LocalStatusCodes.unknown,
-            errors: [],
           ),
         );
       }
@@ -101,7 +94,6 @@ class ApiErrorHandler {
             message: "Server error, please try again later",
             icon: Icons.error,
             statusCode: 500,
-            errors: ["Internal server error occurred"],
           );
 
         default: // Something went wrong
@@ -116,7 +108,6 @@ class ApiErrorHandler {
               message: "Something went wrong. Please try again.",
               icon: Icons.error,
               statusCode: e.response?.statusCode ?? 0,
-              errors: ["Unknown error occurred"],
             );
           }
       }
@@ -126,7 +117,6 @@ class ApiErrorHandler {
         message: "Error processing server response",
         icon: Icons.error,
         statusCode: e.response?.statusCode ?? 0,
-        errors: ["Failed to parse error response"],
       );
     }
   }
@@ -141,14 +131,12 @@ class ApiErrorHandler {
           message: data,
           icon: _getIconForStatusCode(statusCode),
           statusCode: statusCode,
-          errors: [data],
         );
       } else {
         return ApiErrorModel(
           message: "Server returned an error",
           icon: _getIconForStatusCode(statusCode),
           statusCode: statusCode,
-          errors: ["Error: ${data.toString()}"],
         );
       }
     } catch (e) {
@@ -157,7 +145,6 @@ class ApiErrorHandler {
         message: "Error processing server response",
         icon: Icons.error,
         statusCode: statusCode,
-        errors: ["Failed to parse error response"],
       );
     }
   }

@@ -1,44 +1,109 @@
+import 'package:cat_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyles {
   const AppTextStyles._();
 
-  static final TextStyle font28W600h1_1 = TextStyle(
-    fontSize: 28.sp,
-    fontWeight: FontWeight.w600,
-    height: 1.1,
-    letterSpacing: 0.75,
-  );
-  static final TextStyle font25W600h1_1 = TextStyle(
-    fontSize: 25.sp,
-    fontWeight: FontWeight.w600,
-    height: 1.1,
-    letterSpacing: 0.75,
-  );
-  static final TextStyle font20W600h1_1 = TextStyle(
+  static final TextStyle font20W700Black = TextStyle(
     fontSize: 20.sp,
-    fontWeight: FontWeight.w600,
-    height: 1.1,
-    letterSpacing: 0.75,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
   );
-  static final TextStyle font17W500h1_1 = TextStyle(
-    fontSize: 17.sp,
-    fontWeight: FontWeight.w500,
-    height: 1.1,
-    letterSpacing: 0,
+
+  static final TextStyle font32W700Black = TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
   );
-  static final TextStyle font15W500h1_1 = TextStyle(
-    fontSize: 15.sp,
-    fontWeight: FontWeight.w500,
-    height: 1.1,
-    letterSpacing: 0,
+
+  static final TextStyle font16W700Black = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
   );
-  static final TextStyle font15W400h1_4 = TextStyle(
-    fontSize: 15.sp,
+
+  static final TextStyle font16W400Grey = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.w400,
-    height: 1.4,
-    letterSpacing: 0,
+    color: AppColors.grey,
+  );
+
+  static final TextStyle font14W500White = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
+
+  static final TextStyle font14W500textSecondary = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textSecondary,
+  );
+
+  static final TextStyle font14W400Grey = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.grey,
+  );
+
+  static final TextStyle font16W700Black2 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
+  );
+
+  static final TextStyle font12W400TextSecondary = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+  );
+
+  static final TextStyle font11W400TextSecondary = TextStyle(
+    fontSize: 11.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+  );
+
+  static final TextStyle font14W600Black = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
+
+  static final TextStyle font24W700Black = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
+  );
+
+  static final TextStyle font18W700Black = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
+  );
+
+  static final TextStyle font14W400TextSecondary = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondary,
+  );
+
+  static final TextStyle font14W500Black = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.black,
+  );
+
+  static final TextStyle font14W500Primary = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primary,
+  );
+
+  static final TextStyle font12W400Primary = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primary,
   );
 }
-

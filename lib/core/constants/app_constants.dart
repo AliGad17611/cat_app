@@ -6,15 +6,18 @@ import 'package:cat_app/core/constants/ui_constants.dart';
 class AppConstants {
   // API
   static const String baseUrl = ApiConstants.baseUrl;
+  static const String apiKey = ApiConstants.apiKey;
   static const int connectionTimeout = ApiConstants.connectionTimeout;
   static const int receiveTimeout = ApiConstants.receiveTimeout;
   static const int sendTimeout = ApiConstants.sendTimeout;
   // API Endpoints
-  static const String animalsListEndpoint = ApiConstants.animalsListEndpoint;
+  static const String breedsEndpoint = ApiConstants.breedsEndpoint;
   static const String categoriesEndpoint = ApiConstants.categoriesEndpoint;
+  static const String favoritesEndpoint = ApiConstants.favoritesEndpoint;
 
   // Storage
-  static const String isOnboardingCompleted = StorageConstants.isOnboardingCompleted;
+  static const bool isOnboardingCompleted =
+      StorageConstants.isOnboardingCompleted;
 
   // UI
   static const double defaultPadding = UIConstants.defaultPadding;

@@ -20,7 +20,7 @@ class CatApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: appRoutes.generateRoute,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
             textTheme: GoogleFonts.poppinsTextTheme(),
             useMaterial3: true,
           ),
