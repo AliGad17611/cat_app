@@ -39,16 +39,20 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   get_it: ^8.2.0
   google_fonts: ^6.3.2
+  json_annotation: ^4.9.0
   pretty_dio_logger: ^1.4.0
+  retrofit: ^4.7.3
   shared_preferences: ^2.5.3
 
 dev_dependencies:
   bloc_test: ^10.0.0
+  build_runner: ^2.4.13
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.8.0
   mockito: ^5.4.4
-  build_runner: ^2.4.13
+  retrofit_generator: ^9.2.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
