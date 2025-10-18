@@ -12,6 +12,12 @@ import 'widget/primary_button_test.dart' as primary_button_test;
 import 'widget/onboarding_view_test.dart' as onboarding_view_test;
 import 'widget/home_view_test.dart' as home_view_test;
 import 'widget/cat_app_test.dart' as cat_app_test;
+import 'widget/pet_card_widget_test.dart' as pet_card_widget_test;
+import 'widget/favorite_icon_test.dart' as favorite_icon_test;
+import 'widget/search_bar_widget_test.dart' as search_bar_widget_test;
+import 'widget/category_chip_widget_test.dart' as category_chip_widget_test;
+import 'widget/breed_details_view_test.dart' as breed_details_view_test;
+import 'widget/favorites_view_test.dart' as favorites_view_test;
 
 void main() {
   // Unit Tests
@@ -24,4 +30,10 @@ void main() {
   onboarding_view_test.main();
   home_view_test.main();
   cat_app_test.main();
+  pet_card_widget_test.main();
+  favorite_icon_test.main();
+  search_bar_widget_test.main();
+  category_chip_widget_test.main();
+  breed_details_view_test.main();
+  favorites_view_test.main();
 }

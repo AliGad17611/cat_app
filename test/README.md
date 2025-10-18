@@ -14,7 +14,13 @@ test/
 │   ├── primary_button_test.dart
 │   ├── onboarding_view_test.dart
 │   ├── home_view_test.dart
-│   └── cat_app_test.dart
+│   ├── cat_app_test.dart
+│   ├── pet_card_widget_test.dart
+│   ├── favorite_icon_test.dart
+│   ├── search_bar_widget_test.dart
+│   ├── category_chip_widget_test.dart
+│   ├── breed_details_view_test.dart
+│   └── favorites_view_test.dart
 ├── test_suite.dart           # Main test suite
 └── README.md                 # This file
 ```
@@ -38,6 +44,12 @@ flutter test test/widget/primary_button_test.dart
 flutter test test/widget/onboarding_view_test.dart
 flutter test test/widget/home_view_test.dart
 flutter test test/widget/cat_app_test.dart
+flutter test test/widget/pet_card_widget_test.dart
+flutter test test/widget/favorite_icon_test.dart
+flutter test test/widget/search_bar_widget_test.dart
+flutter test test/widget/category_chip_widget_test.dart
+flutter test test/widget/breed_details_view_test.dart
+flutter test test/widget/favorites_view_test.dart
 ```
 
 ### Run Test Suite
@@ -113,6 +125,51 @@ flutter test --watch
    - Tests for theming
    - Tests for routing
    - Tests for initial route
+
+5. **PetCardWidget Tests** (`widget/pet_card_widget_test.dart`)
+   - Tests for breed information display
+   - Tests for image handling
+   - Tests for favorite icon
+   - Tests for tap interactions
+   - Tests for navigation
+   - Tests for conditional rendering
+
+6. **FavoriteIcon Tests** (`widget/favorite_icon_test.dart`)
+   - Tests for icon state (favorited/not favorited)
+   - Tests for toggle favorite functionality
+   - Tests for BLoC integration
+   - Tests for icon styling
+
+7. **SearchBarWidget Tests** (`widget/search_bar_widget_test.dart`)
+   - Tests for search input field
+   - Tests for search icon
+   - Tests for filter button
+   - Tests for hint text
+   - Tests for text input handling
+
+8. **CategoryChipWidget Tests** (`widget/category_chip_widget_test.dart`)
+   - Tests for label display
+   - Tests for selected/unselected states
+   - Tests for tap interactions
+   - Tests for styling changes
+   - Tests for border and colors
+
+9. **BreedDetailsView Tests** (`widget/breed_details_view_test.dart`)
+   - Tests for breed information sections
+   - Tests for SliverAppBar
+   - Tests for back navigation
+   - Tests for favorite functionality
+   - Tests for conditional widget display
+   - Tests for layout structure
+
+10. **FavoritesView Tests** (`widget/favorites_view_test.dart`)
+    - Tests for empty state
+    - Tests for loading state
+    - Tests for error state
+    - Tests for favorites grid display
+    - Tests for category tabs
+    - Tests for pull to refresh
+    - Tests for retry functionality
 
 ## Test Coverage
 
