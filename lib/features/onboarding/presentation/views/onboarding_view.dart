@@ -30,7 +30,7 @@ class OnboardingView extends StatelessWidget {
           ),
           SizedBox(height: 61.h),
           PrimaryButton(
-            text: 'Get Started',
+            text: AppStrings.getStartedButton,
             onTap: () {
               Navigator.pushReplacementNamed(context, Routes.home);
             },
