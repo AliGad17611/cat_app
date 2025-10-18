@@ -32,7 +32,7 @@ class OnboardingView extends StatelessWidget {
           PrimaryButton(
             text: AppStrings.getStartedButton,
             onTap: () {
-              Navigator.pushReplacementNamed(context, Routes.home);
+              Navigator.pushReplacementNamed(context, Routes.mainNavigation);
             },
             icon: Icons.pets,
           ),
